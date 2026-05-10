@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Eduardo Holanda | AI &amp; Fullstack Specialist</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#22005d",
+                    "on-primary-fixed-variant": "#004f54",
+                    "on-tertiary-container": "#6f25f6",
+                    "surface-container-low": "#1c1b1b",
+                    "on-background": "#e5e2e1",
+                    "background": "#050505",
+                    "surface-tint": "#00dbe9",
+                    "surface-container": "#201f1f",
+                    "on-tertiary-fixed-variant": "#5400cc",
+                    "outline-variant": "#3b494b",
+                    "on-tertiary": "#3a0092",
+                    "primary": "#dbfcff",
+                    "surface-bright": "#3a3939",
+                    "surface-container-highest": "#353534",
+                    "secondary-fixed-dim": "#e9c400",
+                    "on-surface": "#e5e2e1",
+                    "surface-container-lowest": "#0e0e0e",
+                    "error": "#ffb4ab",
+                    "inverse-primary": "#006970",
+                    "primary-container": "#00f0ff",
+                    "on-secondary-fixed-variant": "#544600",
+                    "on-secondary-fixed": "#221b00",
+                    "surface-dim": "#131313",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#313030",
+                    "surface": "#131313",
+                    "on-surface-variant": "#b9cacb",
+                    "primary-fixed": "#7df4ff",
+                    "error-container": "#93000a",
+                    "tertiary-container": "#e1d3ff",
+                    "on-secondary-container": "#725f00",
+                    "on-primary": "#00363a",
+                    "tertiary": "#faf3ff",
+                    "secondary-container": "#ffdb3c",
+                    "on-secondary": "#3a3000",
+                    "outline": "#849495",
+                    "inverse-surface": "#e5e2e1",
+                    "tertiary-fixed-dim": "#cfbcff",
+                    "on-primary-container": "#006970",
+                    "surface-variant": "#353534",
+                    "secondary": "#fff9ef",
+                    "on-primary-fixed": "#002022",
+                    "tertiary-fixed": "#e9ddff",
+                    "on-error": "#690005",
+                    "secondary-fixed": "#ffe16d",
+                    "surface-container-high": "#2a2a2a",
+                    "primary-fixed-dim": "#00dbe9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "1.5rem",
+                    "container-max": "640px",
+                    "stack-sm": "0.5rem",
+                    "stack-md": "1rem",
+                    "stack-lg": "2rem"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #050505;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* ====================================================
+           AURORA BACKGROUND — Full screen with 3D constant motion
+           ==================================================== */
+        .aurora-stage {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            overflow: hidden;
+            background: #000;
+            perspective: 1500px;
+            perspective-origin: 50% 50%;
+        }
+        .aurora-photo {
+            position: absolute;
+            top: -15%;
+            left: -15%;
+            width: 130%;
+            height: 130%;
+            background-color: #001a22;
+            background-image:
+                url('https://lh3.googleusercontent.com/aida-public/AB6AXuBkNDJFHLieJkyBU6E4VCRr1V7us5EnS4gsSUZhcStb-ca-zir6ItJYCxFB0ARwmFlMHX_CczsJZUimPaSIvPgaL4Oad9CL-qKqCN2p5i9ifuYkZh8yd-gMKejE4zMdRN1xvUweSfdDni6D0dggPuJGRnbnlZfp4qZCbPg4lb32WBHMK_qtVoH200iYPZvJb2oohSNQIt4NkMWIkIuWz5KahXHAC3-iJu5Dxt7KZ9OcRXe-Gxed7MKhgjjPerrhlYEEAmiBDWbOBdc'),
+                radial-gradient(ellipse at 25% 30%, rgba(0, 219, 233, 0.45), transparent 55%),
+                radial-gradient(ellipse at 75% 70%, rgba(233, 196, 0, 0.30), transparent 55%),
+                linear-gradient(135deg, #001a22 0%, #050a14 100%);
+            background-size: cover, 100% 100%, 100% 100%, 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.75;
+            transform-style: preserve-3d;
+            will-change: transform;
+            animation: aurora-drift 16s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+            filter: saturate(1.35) contrast(1.15);
+        }
+        @keyframes aurora-drift {
+            0%   { transform: scale(1.15) translate3d(0%, 0%, 0px)     rotateX(0deg)  rotateY(0deg)   rotateZ(0deg); }
+            20%  { transform: scale(1.24) translate3d(-5%, -2%, 130px) rotateX(4deg)  rotateY(-4deg)  rotateZ(1deg); }
+            40%  { transform: scale(1.32) translate3d(2%, 4%, 220px)   rotateX(-3deg) rotateY(4deg)   rotateZ(-1.2deg); }
+            60%  { transform: scale(1.30) translate3d(5%, -3%, 200px)  rotateX(3deg)  rotateY(-3deg)  rotateZ(0.8deg); }
+            80%  { transform: scale(1.26) translate3d(-3%, 5%, 110px)  rotateX(-2deg) rotateY(2.5deg) rotateZ(-0.6deg); }
+            100% { transform: scale(1.15) translate3d(-2%, 2%, 0px)    rotateX(0deg)  rotateY(0deg)   rotateZ(0deg); }
+        }
+        .aurora-glow {
+            position: absolute;
+            inset: -10%;
+            background:
+                radial-gradient(circle at 20% 25%, rgba(0, 219, 233, 0.28), transparent 45%),
+                radial-gradient(circle at 80% 75%, rgba(233, 196, 0, 0.22), transparent 45%),
+                radial-gradient(ellipse at 50% 50%, rgba(0, 219, 233, 0.10), transparent 60%);
+            filter: blur(60px);
+            animation: glow-shift 18s infinite alternate ease-in-out;
+            mix-blend-mode: screen;
+            will-change: transform;
+        }
+        @keyframes glow-shift {
+            0%   { transform: translate3d(0,0,0)     scale(1); }
+            33%  { transform: translate3d(-5%, 6%, 0) scale(1.18); }
+            66%  { transform: translate3d(6%, -5%, 0) scale(1.10); }
+            100% { transform: translate3d(2%, 3%, 0)  scale(1.05); }
+        }
+        .aurora-vignette {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at center, transparent 0%, transparent 35%, rgba(5,5,5,0.55) 78%, rgba(5,5,5,0.92) 100%),
+                linear-gradient(180deg, rgba(5,5,5,0.45) 0%, transparent 22%, transparent 75%, rgba(5,5,5,0.65) 100%);
+            pointer-events: none;
+        }
+
+        /* ====================================================
+           GLASS CARDS
+           ==================================================== */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #00dbe9;
+            box-shadow: 0 0 25px rgba(0, 219, 233, 0.18);
+            transform: translateY(-2px);
+        }
+
+        /* ====================================================
+           PROFILE WITH WAVE / SONAR EFFECT
+           ==================================================== */
+        .profile-stage {
+            position: relative;
+            width: 7rem;
+            height: 7rem;
+            display: grid;
+            place-items: center;
+            isolation: isolate;
+        }
+        .profile-halo {
+            position: absolute;
+            inset: -40%;
+            border-radius: 9999px;
+            background:
+                radial-gradient(circle, rgba(0, 219, 233, 0.55) 0%, rgba(233, 196, 0, 0.35) 35%, transparent 65%);
+            filter: blur(22px);
+            z-index: -1;
+            pointer-events: none;
+            animation: halo-pulse 2.4s infinite ease-in-out;
+            will-change: transform, opacity;
+        }
+        @keyframes halo-pulse {
+            0%, 100% { opacity: 0.55; transform: scale(0.92); }
+            50%      { opacity: 1.00; transform: scale(1.18); }
+        }
+        .profile-wave {
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            border: 3px solid #00dbe9;
+            box-shadow: 0 0 22px rgba(0, 219, 233, 0.65), inset 0 0 10px rgba(0, 219, 233, 0.35);
+            opacity: 0;
+            pointer-events: none;
+            animation: wave-emit 2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+        .profile-wave:nth-child(2) { animation-delay: 0.5s; border-color: #e9c400; box-shadow: 0 0 22px rgba(233, 196, 0, 0.7), inset 0 0 10px rgba(233, 196, 0, 0.4); }
+        .profile-wave:nth-child(3) { animation-delay: 1.0s; border-color: #00dbe9; box-shadow: 0 0 22px rgba(0, 219, 233, 0.65), inset 0 0 10px rgba(0, 219, 233, 0.35); }
+        .profile-wave:nth-child(4) { animation-delay: 1.5s; border-color: #e9c400; box-shadow: 0 0 22px rgba(233, 196, 0, 0.7), inset 0 0 10px rgba(233, 196, 0, 0.4); }
+        @keyframes wave-emit {
+            0%   { transform: scale(1.0); opacity: 0.95; border-width: 3px; }
+            50%  { opacity: 0.45; }
+            100% { transform: scale(3.0); opacity: 0;    border-width: 1px; }
+        }
+        .profile-ring {
+            position: absolute;
+            inset: -4px;
+            border-radius: 9999px;
+            background: conic-gradient(from 0deg,
+                #00dbe9 0deg,
+                #e9c400 90deg,
+                #00dbe9 180deg,
+                #e9c400 270deg,
+                #00dbe9 360deg);
+            animation: profile-ring-spin 5s linear infinite;
+            z-index: 0;
+            filter:
+                drop-shadow(0 0 18px rgba(0, 219, 233, 0.65))
+                drop-shadow(0 0 18px rgba(233, 196, 0, 0.55));
+        }
+        @keyframes profile-ring-spin { 100% { transform: rotate(360deg); } }
+        .profile-image {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            border-radius: 9999px;
+            border: 4px solid #050505;
+            object-fit: cover;
+            box-shadow: 0 0 35px rgba(0, 219, 233, 0.35), 0 0 35px rgba(233, 196, 0, 0.25);
+        }
+
+        /* ====================================================
+           NAVIGATION
+           ==================================================== */
+        .header-glow {
+            text-shadow: 0 0 15px rgba(0, 219, 233, 0.45);
+        }
+        .contact-btn {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #00dbe9;
+            background: rgba(0, 219, 233, 0.08);
+            border: 1px solid rgba(0, 219, 233, 0.4);
+            padding: 0.5rem 1.125rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .contact-btn:hover {
+            background: rgba(0, 219, 233, 0.18);
+            border-color: #00dbe9;
+            color: #fff;
+            box-shadow: 0 0 25px rgba(0, 219, 233, 0.45);
+            transform: translateY(-1px);
+        }
+        .contact-btn:active { transform: translateY(0); }
+        .contact-btn::after {
+            content: '→';
+            font-family: ui-monospace, 'SF Mono', monospace;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .contact-btn:hover::after { transform: translateX(3px); }
+
+        /* ====================================================
+           SOCIAL ICONS — Instagram / WhatsApp / LinkedIn
+           ==================================================== */
+        .social-btn {
+            width: 3.5rem;
+            height: 3.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #e5e2e1;
+            position: relative;
+            overflow: hidden;
+        }
+        .social-btn svg {
+            width: 1.6rem;
+            height: 1.6rem;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+        }
+        .social-btn:hover { transform: translateY(-3px); }
+        .social-btn:hover svg { transform: scale(1.12); }
+
+        .social-btn.instagram:hover {
+            background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+            border-color: transparent;
+            box-shadow: 0 0 25px rgba(253, 29, 29, 0.45);
+            color: #fff;
+        }
+        .social-btn.whatsapp:hover {
+            background: #25D366;
+            border-color: #25D366;
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.50);
+            color: #fff;
+        }
+        .social-btn.linkedin:hover {
+            background: #0A66C2;
+            border-color: #0A66C2;
+            box-shadow: 0 0 25px rgba(10, 102, 194, 0.50);
+            color: #fff;
+        }
+
+        /* Reduced motion accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .aurora-photo, .aurora-glow, .profile-wave, .profile-ring, .profile-halo {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center">
+<!-- 3D Aurora Background — full screen with constant motion -->
+<div class="aurora-stage" aria-hidden="true">
+<div class="aurora-photo"></div>
+<div class="aurora-glow"></div>
+<div class="aurora-vignette"></div>
+</div>
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full max-w-[640px] left-1/2 -translate-x-1/2 flex items-center justify-between px-gutter py-4 bg-transparent backdrop-blur-md z-50 border-b border-white/5">
+<span class="font-display-lg text-xl tracking-tighter text-on-surface header-glow">EDUARDO HOLANDA</span>
+<a class="contact-btn" href="https://api.whatsapp.com/send/?phone=5588993744991&text=+Ol%C3%A1%2C+vi+seu+linktree+e+gostaria+de+falar+contigo%21&type=phone_number&app_absent=0" target="_blank" rel="noopener" aria-label="Entre em contato">Entre em contato</a>
+</nav>
+<!-- Content Canvas -->
+<main class="w-full max-w-[640px] px-gutter pt-32 pb-12 flex flex-col items-center relative z-10">
+<!-- Hero Header Section -->
+<header class="w-full mb-stack-lg flex flex-col items-center">
+<!-- Profile Picture with Aggressive Sonar Wave + Gold/Cyan Halo -->
+<div class="profile-stage mb-stack-md">
+<div class="profile-halo" aria-hidden="true"></div>
+<span class="profile-wave"></span>
+<span class="profile-wave"></span>
+<span class="profile-wave"></span>
+<span class="profile-wave"></span>
+<div class="profile-ring"></div>
+<img alt="Eduardo Holanda Profile" class="profile-image" src="https://lh3.googleusercontent.com/aida/ADBb0uj9pwVZ7cLMSHqAzVaa2_-1FQPJpnNRpDZCHvPrV_B_rnv0U0locHZJ6r_IXAaDzkH7ouaOaTvtKDaFLCDDI-8KVvQLP_k8xHN7jbKF0hJESc0YNGVj0JTQnU75bFTeYunmSJacI3MefUicA7pOrpw4IdGgPvNiw6P72KBa8EdopBM4FF-Q1tpCFTgDs-1KVSkoA4jKPQfmH5U_rzDh1-n8sgVu6GEVjYX-h1mIGYgJHnNTpf68AXX_lyA"/>
+</div>
+<!-- Identity Text -->
+<div class="text-center">
+<h1 class="font-display-lg text-4xl text-on-surface mb-stack-sm header-glow">Eduardo Holanda</h1>
+<p class="font-body-md text-sm text-on-surface-variant flex items-center justify-center gap-2">
+                    Desenvolvimento Fullstack <span class="text-primary-fixed-dim opacity-50">•</span> Automações com IA
+                </p>
+</div>
+</header>
+<!-- Links Grid -->
+<section class="w-full flex flex-col gap-stack-md mb-stack-lg">
+<a class="glass-card flex items-center justify-between p-5 rounded-xl w-full group" href="https://atelier-store-eduardo.netlify.app/">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-fixed-dim group-hover:scale-110 duration-300">shopping_cart</span>
+<span class="font-headline-lg text-body-md tracking-wide">Ecommerce</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-40 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</a>
+<a class="glass-card flex items-center justify-between p-5 rounded-xl w-full group" href="https://domineclaude.netlify.app/">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-fixed-dim group-hover:scale-110 duration-300">psychology</span>
+<span class="font-headline-lg text-body-md tracking-wide">Domine o Claude</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-40 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</a>
+<a class="glass-card flex items-center justify-between p-5 rounded-xl w-full group" href="https://v0-nexus-ai-crm.vercel.app/">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-fixed-dim group-hover:scale-110 duration-300">hub</span>
+<span class="font-headline-lg text-body-md tracking-wide">CRM</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-40 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</a>
+<a class="glass-card flex items-center justify-between p-5 rounded-xl w-full group" href="https://agendaproject-frontend.vercel.app/empresa/login">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-fixed-dim group-hover:scale-110 duration-300">calendar_today</span>
+<span class="font-headline-lg text-body-md tracking-wide">Agenda Pro</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-40 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</a>
+<a class="glass-card flex items-center justify-between p-5 rounded-xl w-full group" href="https://holanda-eduardo.github.io/">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-fixed-dim group-hover:scale-110 duration-300">terminal</span>
+<span class="font-headline-lg text-body-md tracking-wide">Portfólio</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-40 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</a>
+<a class="glass-card flex items-center justify-between p-5 rounded-xl w-full group" href="https://maker-paulo.github.io/">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-fixed-dim group-hover:scale-110 duration-300">business</span>
+<span class="font-headline-lg text-body-md tracking-wide">Site Corporativo</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-40 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</a>
+</section>
+<!-- Social Icons Cluster: Instagram, WhatsApp, LinkedIn -->
+<section class="flex gap-8 items-center mt-4" aria-label="Redes sociais">
+<a aria-label="Instagram" class="social-btn instagram" href="https://www.instagram.com/holanda.eduardo_/" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+</svg>
+</a>
+<a aria-label="WhatsApp" class="social-btn whatsapp" href="https://api.whatsapp.com/send/?phone=5588993744991&text=+Ol%C3%A1%2C+vi+seu+linktree+e+gostaria+de+falar+contigo%21&type=phone_number&app_absent=0" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+<path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+</svg>
+</a>
+<a aria-label="LinkedIn" class="social-btn linkedin" href="https://www.linkedin.com/in/eduardo-holanda-jacinto" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+</svg>
+</a>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full max-w-[640px] mx-auto flex flex-col items-center gap-stack-sm text-center py-stack-lg pb-24 relative z-10">
+<p class="font-body-md text-xs text-on-surface-variant opacity-60">
+            © 2026 Eduardo Holanda <span class="mx-1">•</span> Fullstack &amp; AI Specialist
+        </p>
+<div class="flex gap-4">
+<a class="text-on-surface-variant opacity-40 hover:opacity-100 hover:text-on-surface transition-opacity text-label-sm font-label-sm" href="#">Privacy Policy</a>
+<span class="opacity-20">•</span>
+<a class="text-on-surface-variant opacity-40 hover:opacity-100 hover:text-on-surface transition-opacity text-label-sm font-label-sm" href="#">Terms of Service</a>
+</div>
+</footer>
+</body></html>

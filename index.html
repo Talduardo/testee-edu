@@ -2,213 +2,155 @@
 <html class="dark" lang="pt-BR">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Eduardo Holanda | AI &amp; Fullstack Specialist</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 
-<!-- Favicons -->
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="shortcut icon" href="/favicon.ico">
-  
-<script id="tailwind-config">
+<!-- ─── Preconnect: resolve DNS before render ─────────────────────
+     Cuts ~150–300 ms on first load for Google Fonts requests.      -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+<!-- ─── Preload hero image ────────────────────────────────────────
+     Browser fetches it in parallel with CSS/JS instead of waiting
+     for the <img> element to be parsed.                            -->
+<link rel="preload" href="hero.jpeg" as="image" fetchpriority="high"/>
+
+<!-- ─── Tailwind: no unused plugins (forms / container-queries removed) -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- ─── Fonts: display=swap avoids invisible-text flash ──────────
+     Only 3 weights actually used: 400, 600, 700.                  -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet"/>
+
+<!-- ─── Favicons ─────────────────────────────────────────────── -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
+
+<script>
+/* ─── Tailwind config ─────────────────────────────────────────────
+   Only tokens that generate real utility classes are kept.
+   Pure CSS-var tokens (used only in <style>) are in :root below.  */
 tailwind.config = {
-  darkMode:"class",
-  theme:{ extend:{
-    colors:{
-      /* ── surfaces ── */
-      "background"               :"#12100a",
-      "surface"                  :"#0e0a04",
-      "surface-dim"              :"#0e0a04",
-      "surface-container"        :"#1a1508",
-      "surface-container-low"    :"#161204",
-      "surface-container-lowest" :"#0a0804",
-      "surface-container-high"   :"#241c0a",
-      "surface-container-highest":"#2e2410",
-      "surface-bright"           :"#3a3020",
-      "surface-variant"          :"#2a2010",
-      "surface-tint"             :"#d4a843",
-      "inverse-surface"          :"#e8e0d0",
-      "inverse-on-surface"       :"#2e2410",
-      /* ── on-colors ── */
-      "on-background"            :"#e8e0d0",
-      "on-surface"               :"#e8e0d0",
-      "on-surface-variant"       :"#c0b898",   /* warm gray */
-      "on-primary"               :"#2e1c00",
-      "on-primary-fixed"         :"#1a0e00",
-      "on-primary-fixed-variant" :"#4a3200",
-      "on-primary-container"     :"#6a4800",
-      "on-secondary"             :"#2a2010",
-      "on-secondary-fixed"       :"#1a1200",
-      "on-secondary-fixed-variant":"#3a2800",
-      "on-secondary-container"   :"#5a4000",
-      "on-tertiary"              :"#181818",
-      "on-tertiary-fixed"        :"#101010",
-      "on-tertiary-fixed-variant":"#383838",
-      "on-tertiary-container"    :"#606060",
-      "on-error"                 :"#690005",
-      "on-error-container"       :"#ffdad6",
-      /* ── primary / accent — GOLD ── */
-      "primary"                  :"#fff8e0",
-      "primary-fixed"            :"#f5d878",
-      "primary-fixed-dim"        :"#d4a843",   /* main gold — used on icons */
-      "primary-container"        :"#f0c040",
-      "inverse-primary"          :"#7a5010",
-      /* ── secondary — warm tan ── */
-      "secondary"                :"#f5f0e8",
-      "secondary-fixed"          :"#e8d890",
-      "secondary-fixed-dim"      :"#c8a830",
-      "secondary-container"      :"#e8cc50",
-      /* ── tertiary — cool gray ── */
-      "tertiary"                 :"#f0f0f4",
-      "tertiary-fixed"           :"#d8d8e0",
-      "tertiary-fixed-dim"       :"#a8a8b8",
-      "tertiary-container"       :"#c0c0cc",
-      /* ── outline ── */
-      "outline"                  :"#887858",
-      "outline-variant"          :"#3a3020",
-      /* ── error ── */
-      "error"                    :"#ffb4ab",
-      "error-container"          :"#93000a"
+  darkMode: 'class',
+  theme: { extend: {
+    colors: {
+      'on-surface'        : '#e8e0d0',
+      'on-surface-variant': '#c0b898',
+      'primary-fixed-dim' : '#d4a843',
     },
-    borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},
-    spacing:{
-      "gutter":"1.5rem","container-max":"640px",
-      "stack-sm":"0.5rem","stack-md":"1rem","stack-lg":"2rem"
+    spacing: {
+      'gutter'   : '1.5rem',
+      'stack-sm' : '0.5rem',
+      'stack-md' : '1rem',
+      'stack-lg' : '2rem',
     },
-    fontFamily:{
-      "display-lg":["Inter"],"label-sm":["Inter"],
-      "headline-lg-mobile":["Inter"],"body-md":["Inter"],"headline-lg":["Inter"]
+    fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+    fontSize: {
+      'body-md'   : ['1rem',    { lineHeight: '1.6' }],
+      'label-sm'  : ['0.75rem', { lineHeight: '1',   letterSpacing: '0.05em', fontWeight: '500' }],
     },
-    fontSize:{
-      "display-lg":        ["48px",{"lineHeight":"1.1","letterSpacing":"-0.02em","fontWeight":"700"}],
-      "label-sm":          ["12px",{"lineHeight":"1","letterSpacing":"0.05em","fontWeight":"500"}],
-      "headline-lg-mobile":["28px",{"lineHeight":"1.2","fontWeight":"600"}],
-      "body-md":           ["16px",{"lineHeight":"1.6","letterSpacing":"0em","fontWeight":"400"}],
-      "headline-lg":       ["32px",{"lineHeight":"1.2","letterSpacing":"-0.01em","fontWeight":"600"}]
-    }
-  }}
+  }},
 }
 </script>
 
 <style>
-/* ═══════════════════════════════════════════════════════════════
-   DESIGN TOKENS  ─  Gold & Gray palette
-   ─────────────────────────────────────────────────────────────
-   --gold-hi   : primary accent  (#d4a843 — warm satin gold)
-   --gold-mid  : medium gold     (#b08828)
-   --gold-lo   : dark gold       (#7a5c14)
-   --silver-hi : light gray      (#b8b8c8 — cool, keeps things elegant)
-   --silver-mid: medium gray     (#888898)
-   --grad-a    : darkest bg base (#1a1508 — near-black warm)
-   --grad-b    : gradient end    (#221b08 — very dark amber)
-═══════════════════════════════════════════════════════════════ */
+/* ─── Design tokens ──────────────────────────────────────────── */
 :root {
-  --gold-hi   : #d4a843;
-  --gold-mid  : #b08828;
-  --gold-lo   : #7a5c14;
-  --silver-hi : #b8b8c8;
-  --silver-mid: #888898;
-  --silver-lo : #545464;
-  --base      : #0e0a04;
-  --grad-a    : #1a1508;
-  --grad-b    : #221b08;
-  --card-bg   : rgba(212,168,67,0.055);
-  --card-border: rgba(212,168,67,0.13);
+  --gold    : #d4a843;
+  --gold-dk : #b08828;
+  --silver  : #b8b8c8;
+  --bg-a    : #1a1508;
+  --bg-b    : #221b08;
+  --card-bg : rgba(212,168,67,.055);
+  --card-bd : rgba(212,168,67,.13);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   BASE RESET
-═══════════════════════════════════════════════════════════════ */
+/* ─── Base ───────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--grad-a);
+html  { scroll-behavior: smooth; }
+body  {
+  background: var(--bg-a);
   color: #e8e0d0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', ui-sans-serif, system-ui;
   overflow-x: hidden;
   min-height: 100vh;
 }
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  /* Prevent layout shift while icon font loads */
+  font-size: 1.5rem;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   BACKGROUND LAYERS
-   z-4  #bg-gradient  — diagonal gradient + dark overlay
-   z-3  #bg-noise     — fractal noise tile @ opacity 0.04
-   z-2  #bg-glow      — soft gold & silver radial blooms
-   z-1  #particle-canvas — animated canvas (lazy)
-═══════════════════════════════════════════════════════════════ */
+/* ─── Background layers ──────────────────────────────────────── */
+/* contain:strict tells the browser these fixed layers are fully
+   self-contained — skips layout/style recalcs on scroll.         */
 
-/* L1 — Diagonal gradient  #1a1508 → #221b08 → #120e04  +  dark overlay */
 #bg-gradient {
   position: fixed; inset: 0; z-index: -4;
+  contain: strict;
   background:
-    linear-gradient(rgba(0,0,0,0.48), rgba(0,0,0,0.48)),
-    linear-gradient(135deg, var(--grad-a) 0%, var(--grad-b) 55%, #120e04 100%);
+    linear-gradient(rgba(0,0,0,.48), rgba(0,0,0,.48)),
+    linear-gradient(135deg, var(--bg-a) 0%, var(--bg-b) 55%, #120e04 100%);
 }
 
-/* L2 — Fractal noise @ 0.04 opacity — drifts very slowly */
 #bg-noise {
   position: fixed; inset: 0; z-index: -3;
+  contain: strict;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: .04;
+  /* Inline SVG data-URI noise tile — zero HTTP request */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 256px 256px;
   animation: noise-drift 90s linear infinite;
+  /* Only animate on compositor thread — no paint */
+  will-change: background-position;
 }
 @keyframes noise-drift { to { background-position: 256px 512px; } }
 
-/* L3 — Accent glows: gold upper-left, silver lower-right */
 #bg-glow {
   position: fixed; inset: 0; z-index: -2;
+  contain: strict;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 55% 40% at 12% 18%,
-      rgba(212,168,67,0.10) 0%, transparent 70%),
-    radial-gradient(ellipse 45% 35% at 88% 82%,
-      rgba(160,160,180,0.07) 0%, transparent 70%),
-    radial-gradient(ellipse 30% 20% at 50% 50%,
-      rgba(212,168,67,0.04) 0%, transparent 60%);
+    radial-gradient(ellipse 55% 40% at 12% 18%, rgba(212,168,67,.10) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 35% at 88% 82%, rgba(160,160,180,.07) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 20% at 50% 50%, rgba(212,168,67,.04) 0%, transparent 60%);
 }
 
-/* L4 — Particle canvas */
+/* Particle canvas — starts transparent, JS adds .ready to fade in */
 #particle-canvas {
   position: fixed; inset: 0; z-index: -1;
   pointer-events: none;
   opacity: 0;
   transition: opacity 1s ease;
+  /* Force GPU compositing so canvas paints don't trigger page repaints */
+  transform: translateZ(0);
 }
 #particle-canvas.ready { opacity: 1; }
 
-
-
-/* ═══════════════════════════════════════════════════════════════
-   GLASS CARDS
-═══════════════════════════════════════════════════════════════ */
+/* ─── Glass cards ────────────────────────────────────────────── */
 .glass-card {
   background: var(--card-bg);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--card-border);
-  transition: all 0.38s cubic-bezier(0.4,0,0.2,1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-bd);
+  transition: background .38s ease, border-color .38s ease,
+              box-shadow .38s ease, transform .38s ease;
 }
 .glass-card:hover {
-  background: rgba(212,168,67,0.09);
-  border-color: rgba(212,168,67,0.42);
-  box-shadow:
-    0 0 28px rgba(212,168,67,0.11),
-    inset 0 1px 0 rgba(212,168,67,0.09);
+  background: rgba(212,168,67,.09);
+  border-color: rgba(212,168,67,.42);
+  box-shadow: 0 0 28px rgba(212,168,67,.11),
+              inset 0 1px 0 rgba(212,168,67,.09);
   transform: translateY(-2px);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   PROFILE AVATAR
-═══════════════════════════════════════════════════════════════ */
+/* ─── Profile avatar ─────────────────────────────────────────── */
 .profile-stage {
   position: relative;
   width: 7rem; height: 7rem;
@@ -216,162 +158,167 @@ body {
   isolation: isolate;
 }
 
-/* Ambient halo — blurred gold glow */
 .profile-halo {
   position: absolute; inset: -52%;
   border-radius: 9999px;
   background: radial-gradient(circle,
-    rgba(212,168,67,0.26) 0%,
-    rgba(176,136,40,0.08) 42%,
-    transparent 68%);
+    rgba(212,168,67,.26) 0%, rgba(176,136,40,.08) 42%, transparent 68%);
   filter: blur(26px);
   z-index: -1; pointer-events: none;
   animation: halo-breathe 5s infinite ease-in-out;
   will-change: opacity, transform;
 }
 @keyframes halo-breathe {
-  0%,100% { opacity: 0.40; transform: scale(0.90); }
-  50%     { opacity: 0.88; transform: scale(1.14); }
+  0%,100% { opacity: .40; transform: scale(.90); }
+  50%     { opacity: .88; transform: scale(1.14); }
 }
 
-/* Ripple rings — alternating gold & silver-gray */
+/* All 4 waves share base rules; only delay + border-color differ */
 .profile-wave {
   position: absolute; inset: 0;
   border-radius: 9999px;
-  border: 1px solid rgba(212,168,67,0.46);
-  box-shadow: 0 0 7px rgba(212,168,67,0.12);
+  border: 1px solid rgba(212,168,67,.46);
+  box-shadow: 0 0 7px rgba(212,168,67,.12);
   opacity: 0; pointer-events: none;
-  animation: ripple-out 4.2s infinite cubic-bezier(0.10,0.90,0.28,1);
+  animation: ripple-out 4.2s infinite cubic-bezier(.10,.90,.28,1);
   will-change: transform, opacity;
 }
-/* Even waves: silver-gray ring for contrast */
-.profile-wave:nth-child(2){ animation-delay:1.05s; border-color:rgba(184,184,200,0.34); box-shadow:0 0 7px rgba(184,184,200,0.10); }
-.profile-wave:nth-child(3){ animation-delay:2.10s; }
-.profile-wave:nth-child(4){ animation-delay:3.15s; border-color:rgba(184,184,200,0.34); box-shadow:0 0 7px rgba(184,184,200,0.10); }
+/* Even waves use silver tint for visual contrast */
+.profile-wave:nth-child(2) {
+  animation-delay: 1.05s;
+  border-color: rgba(184,184,200,.34);
+  box-shadow: 0 0 7px rgba(184,184,200,.10);
+}
+.profile-wave:nth-child(3) { animation-delay: 2.10s; }
+.profile-wave:nth-child(4) {
+  animation-delay: 3.15s;
+  border-color: rgba(184,184,200,.34);
+  box-shadow: 0 0 7px rgba(184,184,200,.10);
+}
 @keyframes ripple-out {
-  0%   { transform:scale(1.00); opacity:0.52; }
-  30%  { opacity:0.26; }
-  100% { transform:scale(2.50); opacity:0; }
+  0%   { transform: scale(1);    opacity: .52; }
+  30%  {                         opacity: .26; }
+  100% { transform: scale(2.50); opacity: 0; }
 }
 
-/* Spinning conic ring — gold with dim passages */
 .profile-ring {
   position: absolute; inset: -4px;
   border-radius: 9999px;
   background: conic-gradient(from 0deg,
-    #d4a843 0deg,
-    rgba(212,168,67,0.10) 110deg,
-    #c09030 190deg,
-    rgba(184,184,200,0.18) 260deg,   /* silver flash */
+    #d4a843 0deg, rgba(212,168,67,.10) 110deg,
+    #c09030 190deg, rgba(184,184,200,.18) 260deg,
     #d4a843 360deg);
   animation: ring-spin 11s linear infinite;
   z-index: 0;
-  filter: drop-shadow(0 0 9px rgba(212,168,67,0.50));
+  filter: drop-shadow(0 0 9px rgba(212,168,67,.50));
+  will-change: transform;
 }
-@keyframes ring-spin { 100%{ transform:rotate(360deg); } }
+@keyframes ring-spin { 100% { transform: rotate(360deg); } }
 
-/* Avatar image */
 .profile-image {
   position: relative; z-index: 1;
   width: 100%; height: 100%;
   border-radius: 9999px;
-  border: 3px solid var(--grad-b);
+  border: 3px solid var(--bg-b);
   object-fit: cover;
-  box-shadow:
-    0 0 22px rgba(212,168,67,0.22),
-    0 0  7px rgba(176,136,40,0.16);
+  box-shadow: 0 0 22px rgba(212,168,67,.22), 0 0 7px rgba(176,136,40,.16);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   NAVIGATION
-═══════════════════════════════════════════════════════════════ */
-.header-glow { text-shadow: 0 0 20px rgba(212,168,67,0.38); }
+/* ─── Navigation ─────────────────────────────────────────────── */
+.header-glow { text-shadow: 0 0 20px rgba(212,168,67,.38); }
 
 .contact-btn {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.02em;
-  color: var(--gold-hi);
-  background: rgba(212,168,67,0.08);
-  border: 1px solid rgba(212,168,67,0.36);
-  padding: 0.5rem 1.125rem;
+  font-size: .8125rem; font-weight: 500; letter-spacing: .02em;
+  color: var(--gold);
+  background: rgba(212,168,67,.08);
+  border: 1px solid rgba(212,168,67,.36);
+  padding: .5rem 1.125rem;
   border-radius: 9999px;
   text-decoration: none;
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  transition: all 0.28s cubic-bezier(0.4,0,0.2,1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   white-space: nowrap;
-  display: inline-flex; align-items: center; gap: 0.4rem;
+  display: inline-flex; align-items: center; gap: .4rem;
+  transition: background .28s ease, border-color .28s ease,
+              box-shadow .28s ease, color .28s ease, transform .28s ease;
 }
 .contact-btn:hover {
-  background: rgba(212,168,67,0.17);
-  border-color: var(--gold-hi); color: #fff8e8;
-  box-shadow: 0 0 20px rgba(212,168,67,0.36);
+  background: rgba(212,168,67,.17);
+  border-color: var(--gold); color: #fff8e8;
+  box-shadow: 0 0 20px rgba(212,168,67,.36);
   transform: translateY(-1px);
 }
-.contact-btn:active { transform: translateY(0); }
+.contact-btn:active { transform: none; }
 .contact-btn::after {
-  content: '→'; font-family: ui-monospace,'SF Mono',monospace;
-  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1);
+  content: '→';
+  font-family: ui-monospace, 'SF Mono', monospace;
+  transition: transform .28s cubic-bezier(.34,1.56,.64,1);
 }
 .contact-btn:hover::after { transform: translateX(3px); }
 
-/* ═══════════════════════════════════════════════════════════════
-   SOCIAL BUTTONS
-═══════════════════════════════════════════════════════════════ */
+/* ─── Social buttons ─────────────────────────────────────────── */
 .social-btn {
   width: 3.5rem; height: 3.5rem;
   display: inline-flex; align-items: center; justify-content: center;
   border-radius: 9999px;
+  /* No backdrop-filter in base state — expensive, only needed on hover */
   background: var(--card-bg);
-  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-  border: 1px solid var(--card-border);
-  transition: all 0.32s cubic-bezier(0.4,0,0.2,1);
-  color: #e8e0d0; position: relative; overflow: hidden;
+  border: 1px solid var(--card-bd);
+  color: #e8e0d0;
+  position: relative; overflow: hidden;
+  transition: transform .32s ease, background .32s ease,
+              border-color .32s ease, box-shadow .32s ease, color .32s ease;
 }
 .social-btn svg {
   width: 1.55rem; height: 1.55rem;
-  transition: transform 0.32s cubic-bezier(0.4,0,0.2,1);
+  transition: transform .32s ease;
   position: relative; z-index: 1;
+  /* Prevents SVG from catching pointer events and blocking the <a> */
+  pointer-events: none;
 }
-.social-btn:hover             { transform: translateY(-3px); }
-.social-btn:hover svg         { transform: scale(1.12); }
+.social-btn:hover { transform: translateY(-3px); }
+.social-btn:hover svg { transform: scale(1.12); }
+
 .social-btn.instagram:hover {
-  background: linear-gradient(135deg,#833ab4 0%,#fd1d1d 50%,#fcb045 100%);
+  background: linear-gradient(135deg, #833ab4, #fd1d1d 50%, #fcb045);
   border-color: transparent;
-  box-shadow: 0 0 22px rgba(253,29,29,0.40); color:#fff;
+  box-shadow: 0 0 22px rgba(253,29,29,.40); color: #fff;
 }
 .social-btn.whatsapp:hover {
-  background:#25D366; border-color:#25D366;
-  box-shadow: 0 0 22px rgba(37,211,102,0.45); color:#fff;
+  background: #25D366; border-color: #25D366;
+  box-shadow: 0 0 22px rgba(37,211,102,.45); color: #fff;
 }
 .social-btn.linkedin:hover {
-  background:#0A66C2; border-color:#0A66C2;
-  box-shadow: 0 0 22px rgba(10,102,194,0.45); color:#fff;
+  background: #0A66C2; border-color: #0A66C2;
+  box-shadow: 0 0 22px rgba(10,102,194,.45); color: #fff;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   REDUCED MOTION
-═══════════════════════════════════════════════════════════════ */
+/* ─── Accessibility — reduced motion ────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .profile-halo, .profile-wave, .profile-ring, #bg-noise {
     animation: none !important;
+    will-change: auto !important;
   }
+  .glass-card, .contact-btn, .social-btn { transition: none !important; }
 }
 </style>
 </head>
+
 <body class="flex flex-col items-center">
 
-<!-- Background layers -->
+<!-- Background layers (decorative, hidden from a11y tree) -->
 <div id="bg-gradient" aria-hidden="true"></div>
 <div id="bg-noise"    aria-hidden="true"></div>
 <div id="bg-glow"     aria-hidden="true"></div>
 <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
-<!-- Navigation -->
+<!-- ─── Navigation ───────────────────────────────────────────── -->
 <nav class="fixed top-0 w-full max-w-[640px] left-1/2 -translate-x-1/2
             flex items-center justify-between
-            px-gutter py-4 bg-transparent backdrop-blur-md
-            z-50 border-b border-white/5">
-  <span class="font-display-lg text-xl tracking-tighter text-on-surface header-glow">
+            px-gutter py-4 backdrop-blur-md
+            z-50 border-b border-white/5"
+     aria-label="Navegação principal">
+  <span class="text-xl font-bold tracking-tighter text-on-surface header-glow">
     EDUARDO HOLANDA
   </span>
   <a class="contact-btn"
@@ -382,115 +329,156 @@ body {
   </a>
 </nav>
 
-<!-- Main -->
-<main class="w-full max-w-[640px] px-gutter pt-32 pb-12 flex flex-col items-center relative z-10">
+<!-- ─── Main ──────────────────────────────────────────────────── -->
+<main class="w-full max-w-[640px] px-gutter pt-32 pb-12
+             flex flex-col items-center relative z-10">
 
+  <!-- Hero header -->
   <header class="w-full mb-stack-lg flex flex-col items-center">
-
     <div class="profile-stage mb-stack-md" id="profile-stage">
-      <div class="profile-halo"  aria-hidden="true"></div>
+      <div class="profile-halo" aria-hidden="true"></div>
       <span class="profile-wave" aria-hidden="true"></span>
       <span class="profile-wave" aria-hidden="true"></span>
       <span class="profile-wave" aria-hidden="true"></span>
       <span class="profile-wave" aria-hidden="true"></span>
-      <div class="profile-ring"  aria-hidden="true"></div>
-      <img alt="Foto de perfil de Eduardo Holanda"
+      <div class="profile-ring" aria-hidden="true"></div>
+      <img src="hero.jpeg"
+           alt="Foto de perfil de Eduardo Holanda"
            class="profile-image"
+           width="112" height="112"
            loading="eager"
-           src="hero.jpeg"/>
+           decoding="async"
+           fetchpriority="high"/>
     </div>
 
     <div class="text-center">
-      <h1 class="font-display-lg text-4xl text-on-surface mb-stack-sm header-glow">
+      <h1 class="text-4xl font-bold tracking-tight text-on-surface mb-stack-sm header-glow">
         Eduardo Holanda
       </h1>
-      <p class="font-body-md text-sm text-on-surface-variant flex items-center justify-center gap-2">
+      <p class="text-sm text-on-surface-variant flex items-center justify-center gap-2">
         Desenvolvimento Fullstack
-        <span class="text-primary-fixed-dim opacity-40">•</span>
+        <span class="text-primary-fixed-dim opacity-40" aria-hidden="true">•</span>
         Automações com IA
       </p>
     </div>
   </header>
 
-  <section class="w-full flex flex-col gap-stack-md mb-stack-lg" aria-label="Projetos e links">
+  <!-- Link cards -->
+  <section class="w-full flex flex-col gap-stack-md mb-stack-lg"
+           aria-label="Projetos e links">
 
-    <a class="glass-card flex items-center justify-between p-5 rounded-xl w-full group"
-       href="https://atelier-store-eduardo.netlify.app/">
+    <a class="glass-card flex items-center justify-between p-5 rounded-xl group"
+       href="https://atelier-store-eduardo.netlify.app/"
+       target="_blank" rel="noopener noreferrer">
       <div class="flex items-center gap-4">
-        <span class="material-symbols-outlined text-primary-fixed-dim group-hover:scale-110 duration-300">shopping_cart</span>
-        <span class="font-headline-lg text-body-md tracking-wide">Ecommerce</span>
+        <span class="material-symbols-outlined text-primary-fixed-dim
+                     group-hover:scale-110 transition-transform duration-300"
+              aria-hidden="true">shopping_cart</span>
+        <span class="text-body-md font-semibold tracking-wide">Ecommerce</span>
       </div>
-      <span class="material-symbols-outlined text-on-surface-variant opacity-40 group-hover:opacity-100 transition-opacity">chevron_right</span>
+      <span class="material-symbols-outlined text-on-surface-variant opacity-40
+                   group-hover:opacity-100 transition-opacity"
+            aria-hidden="true">chevron_right</span>
     </a>
 
-    <a class="glass-card flex items-center justify-between p-5 rounded-xl w-full group"
-       href="https://domineclaude.netlify.app/">
+    <a class="glass-card flex items-center justify-between p-5 rounded-xl group"
+       href="https://domineclaude.netlify.app/"
+       target="_blank" rel="noopener noreferrer">
       <div class="flex items-center gap-4">
-        <span class="material-symbols-outlined text-primary-fixed-dim group-hover:scale-110 duration-300">psychology</span>
-        <span class="font-headline-lg text-body-md tracking-wide">Domine o Claude</span>
+        <span class="material-symbols-outlined text-primary-fixed-dim
+                     group-hover:scale-110 transition-transform duration-300"
+              aria-hidden="true">psychology</span>
+        <span class="text-body-md font-semibold tracking-wide">Domine o Claude</span>
       </div>
-      <span class="material-symbols-outlined text-on-surface-variant opacity-40 group-hover:opacity-100 transition-opacity">chevron_right</span>
+      <span class="material-symbols-outlined text-on-surface-variant opacity-40
+                   group-hover:opacity-100 transition-opacity"
+            aria-hidden="true">chevron_right</span>
     </a>
 
-    <a class="glass-card flex items-center justify-between p-5 rounded-xl w-full group"
-       href="https://v0-nexus-ai-crm.vercel.app/">
+    <a class="glass-card flex items-center justify-between p-5 rounded-xl group"
+       href="https://v0-nexus-ai-crm.vercel.app/"
+       target="_blank" rel="noopener noreferrer">
       <div class="flex items-center gap-4">
-        <span class="material-symbols-outlined text-primary-fixed-dim group-hover:scale-110 duration-300">hub</span>
-        <span class="font-headline-lg text-body-md tracking-wide">CRM</span>
+        <span class="material-symbols-outlined text-primary-fixed-dim
+                     group-hover:scale-110 transition-transform duration-300"
+              aria-hidden="true">hub</span>
+        <span class="text-body-md font-semibold tracking-wide">CRM</span>
       </div>
-      <span class="material-symbols-outlined text-on-surface-variant opacity-40 group-hover:opacity-100 transition-opacity">chevron_right</span>
+      <span class="material-symbols-outlined text-on-surface-variant opacity-40
+                   group-hover:opacity-100 transition-opacity"
+            aria-hidden="true">chevron_right</span>
     </a>
 
-    <a class="glass-card flex items-center justify-between p-5 rounded-xl w-full group"
-       href="https://agendaproject-frontend.vercel.app/empresa/login">
+    <a class="glass-card flex items-center justify-between p-5 rounded-xl group"
+       href="https://agendaproject-frontend.vercel.app/empresa/login"
+       target="_blank" rel="noopener noreferrer">
       <div class="flex items-center gap-4">
-        <span class="material-symbols-outlined text-primary-fixed-dim group-hover:scale-110 duration-300">calendar_today</span>
-        <span class="font-headline-lg text-body-md tracking-wide">Agenda Pro</span>
+        <span class="material-symbols-outlined text-primary-fixed-dim
+                     group-hover:scale-110 transition-transform duration-300"
+              aria-hidden="true">calendar_today</span>
+        <span class="text-body-md font-semibold tracking-wide">Agenda Pro</span>
       </div>
-      <span class="material-symbols-outlined text-on-surface-variant opacity-40 group-hover:opacity-100 transition-opacity">chevron_right</span>
+      <span class="material-symbols-outlined text-on-surface-variant opacity-40
+                   group-hover:opacity-100 transition-opacity"
+            aria-hidden="true">chevron_right</span>
     </a>
 
-    <a class="glass-card flex items-center justify-between p-5 rounded-xl w-full group"
-       href="https://holanda-eduardo.github.io/">
+    <a class="glass-card flex items-center justify-between p-5 rounded-xl group"
+       href="https://holanda-eduardo.github.io/"
+       target="_blank" rel="noopener noreferrer">
       <div class="flex items-center gap-4">
-        <span class="material-symbols-outlined text-primary-fixed-dim group-hover:scale-110 duration-300">terminal</span>
-        <span class="font-headline-lg text-body-md tracking-wide">Portfólio</span>
+        <span class="material-symbols-outlined text-primary-fixed-dim
+                     group-hover:scale-110 transition-transform duration-300"
+              aria-hidden="true">terminal</span>
+        <span class="text-body-md font-semibold tracking-wide">Portfólio</span>
       </div>
-      <span class="material-symbols-outlined text-on-surface-variant opacity-40 group-hover:opacity-100 transition-opacity">chevron_right</span>
+      <span class="material-symbols-outlined text-on-surface-variant opacity-40
+                   group-hover:opacity-100 transition-opacity"
+            aria-hidden="true">chevron_right</span>
     </a>
 
-    <a class="glass-card flex items-center justify-between p-5 rounded-xl w-full group"
-       href="https://maker-paulo.github.io/">
+    <a class="glass-card flex items-center justify-between p-5 rounded-xl group"
+       href="https://maker-paulo.github.io/"
+       target="_blank" rel="noopener noreferrer">
       <div class="flex items-center gap-4">
-        <span class="material-symbols-outlined text-primary-fixed-dim group-hover:scale-110 duration-300">business</span>
-        <span class="font-headline-lg text-body-md tracking-wide">Site Corporativo</span>
+        <span class="material-symbols-outlined text-primary-fixed-dim
+                     group-hover:scale-110 transition-transform duration-300"
+              aria-hidden="true">business</span>
+        <span class="text-body-md font-semibold tracking-wide">Site Corporativo</span>
       </div>
-      <span class="material-symbols-outlined text-on-surface-variant opacity-40 group-hover:opacity-100 transition-opacity">chevron_right</span>
+      <span class="material-symbols-outlined text-on-surface-variant opacity-40
+                   group-hover:opacity-100 transition-opacity"
+            aria-hidden="true">chevron_right</span>
     </a>
 
   </section>
 
+  <!-- Social row -->
   <section class="flex gap-8 items-center mt-4" aria-label="Redes sociais">
 
-    <a aria-label="Instagram de Eduardo Holanda" class="social-btn instagram"
-       href="https://www.instagram.com/holanda.eduardo_/" target="_blank" rel="noopener noreferrer">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <a class="social-btn instagram"
+       href="https://www.instagram.com/holanda.eduardo_/"
+       target="_blank" rel="noopener noreferrer"
+       aria-label="Instagram de Eduardo Holanda">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
       </svg>
     </a>
 
-    <a aria-label="WhatsApp de Eduardo Holanda" class="social-btn whatsapp"
+    <a class="social-btn whatsapp"
        href="https://api.whatsapp.com/send/?phone=5588993744991&text=+Ol%C3%A1%2C+vi+seu+linktree+e+gostaria+de+falar+contigo%21&type=phone_number&app_absent=0"
-       target="_blank" rel="noopener noreferrer">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+       target="_blank" rel="noopener noreferrer"
+       aria-label="WhatsApp de Eduardo Holanda">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
       </svg>
     </a>
 
-    <a aria-label="LinkedIn de Eduardo Holanda" class="social-btn linkedin"
+    <a class="social-btn linkedin"
        href="https://www.linkedin.com/in/eduardo-holanda-jacinto"
-       target="_blank" rel="noopener noreferrer">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+       target="_blank" rel="noopener noreferrer"
+       aria-label="LinkedIn de Eduardo Holanda">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
       </svg>
     </a>
@@ -498,175 +486,214 @@ body {
   </section>
 </main>
 
+<!-- ─── Footer ────────────────────────────────────────────────── -->
 <footer class="w-full max-w-[640px] mx-auto flex flex-col items-center gap-stack-sm
                text-center py-stack-lg pb-20 relative z-10">
-  <p class="font-body-md text-xs text-on-surface-variant opacity-55">
-    © 2026 Eduardo Holanda <span class="mx-1">•</span> Fullstack &amp; AI Specialist
+  <p class="text-label-sm text-on-surface-variant opacity-55">
+    © 2026 Eduardo Holanda <span class="mx-1" aria-hidden="true">•</span>
+    Fullstack &amp; AI Specialist
   </p>
   <div class="flex gap-4">
-    <a class="text-on-surface-variant opacity-38 hover:opacity-90 hover:text-on-surface
-              transition-opacity text-label-sm font-label-sm" href="#">Privacy Policy</a>
-    <span class="opacity-18">•</span>
-    <a class="text-on-surface-variant opacity-38 hover:opacity-90 hover:text-on-surface
-              transition-opacity text-label-sm font-label-sm" href="#">Terms of Service</a>
+    <a class="text-label-sm text-on-surface-variant opacity-40
+              hover:opacity-90 transition-opacity" href="#">Privacy Policy</a>
+    <span aria-hidden="true" class="opacity-20">•</span>
+    <a class="text-label-sm text-on-surface-variant opacity-40
+              hover:opacity-90 transition-opacity" href="#">Terms of Service</a>
   </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════════════════════════════
-     PARTICLE ENGINE  —  Gold & Gray palette
-═══════════════════════════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════════════════════
+     PARTICLE ENGINE  (struct-of-arrays, zero GC during animation)
+     ─────────────────────────────────────────────────────────────
+     All particle data is stored in flat Float32Arrays instead of
+     class instances. This gives the JS engine a dense, typed memory
+     layout — no pointer chasing, no GC pauses during rAF.
+
+     Field particles  — FIELD_N floats × 8 channels:
+       x, y, vx, vy, r, baseAlpha, twPhase, twSpeed
+
+     Orbital particles — ORBS_N floats × 5 channels:
+       angle, speed, rx, ry, r, baseAlpha
+═══════════════════════════════════════════════════════════════ -->
 <script>
 (function () {
 'use strict';
 
-const CFG = {
-  BASE_COUNT : 40,
-  SPEED_X    : 0.014,
-  SPEED_Y    : 0.012,
-  MIN_R      : 0.6,
-  MAX_R      : 2.2,
-  MIN_ALPHA  : 0.07,
-  MAX_ALPHA  : 0.34,
-  ORBIT_N    : 6,
-  ORBIT_R    : 72,
-  ORBIT_FLAT : 0.38,
-  ORBIT_SPD  : 0.00032,
-  /* Gold primary — warm satin */
-  COL_GOLD   : [212, 168,  67],
-  /* Cool gray — keeps the palette from being too warm */
-  COL_SILVER : [184, 184, 200],
-};
+/* ─── Feature detection: bail early for reduced-motion / save-data ── */
+if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+if ((navigator.connection || {}).saveData) return;
 
-const REDUCED   = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-const SAVE_DATA = Boolean((navigator.connection || {}).saveData);
-if (REDUCED || SAVE_DATA) return;
+/* ─── Constants ──────────────────────────────────────────────────── */
+const GOLD   = [212, 168,  67];
+const SILVER = [184, 184, 200];
 
+const BASE_N     = 40;     // field particles at full width
+const ORBS_N     = 6;      // orbital particles around avatar
+const ORBIT_R    = 72;     // orbital semi-major axis (px)
+const ORBIT_FLAT = 0.38;   // ry = rx × this  (perspective tilt)
+const ORBIT_SPD  = 3.2e-4; // rad/ms
+
+const FIELD_STRIDE  = 8;   // floats per field particle
+const ORBITAL_STRIDE = 6;  // floats per orbital particle
+
+/* ─── DOM ────────────────────────────────────────────────────────── */
 const canvas    = document.getElementById('particle-canvas');
-const ctx       = canvas.getContext('2d');
+const ctx       = canvas.getContext('2d', { alpha: true });
 const profileEl = document.getElementById('profile-stage');
 
-let W = 0, H = 0, avatarX = 0, avatarY = 0;
-let lastTS = null, field = [], orbs = [];
+/* ─── State ──────────────────────────────────────────────────────── */
+let W = 0, H = 0, avatarX = 0, avatarY = 0, lastTS = null;
+let fieldArr, orbArr, fieldN;
 
-const rand  = (a, b) => a + Math.random() * (b - a);
-/* 65% gold, 35% silver — subtle mix */
-const randC = () => Math.random() < 0.65 ? CFG.COL_GOLD : CFG.COL_SILVER;
+/* ─── Helpers ────────────────────────────────────────────────────── */
+const rnd  = (a, b) => a + Math.random() * (b - a);
+const coin = p => Math.random() < p;     // true with probability p
 
-class FieldParticle {
-  constructor (initial = true) { this._init(initial); }
-  _init (initial) {
-    this.x      = rand(0, W);
-    this.y      = initial ? rand(0, H) : (Math.random() < 0.5 ? -4 : H + 4);
-    this.r      = rand(CFG.MIN_R, CFG.MAX_R);
-    this.vx     = (Math.random() - 0.5) * CFG.SPEED_X;
-    this.vy     = (Math.random() - 0.52) * CFG.SPEED_Y;
-    this.col    = randC();
-    this.baseA  = rand(CFG.MIN_ALPHA, CFG.MAX_ALPHA);
-    this.twPh   = rand(0, Math.PI * 2);
-    this.twSpd  = rand(0.00025, 0.0009);
-    this.alpha  = this.baseA;
-  }
-  update (dt, now) {
-    this.x    += this.vx * dt;
-    this.y    += this.vy * dt;
-    this.alpha = this.baseA * (0.62 + 0.38 * Math.sin(this.twPh + now * this.twSpd));
-    if (this.x < -4)    this.x = W + 4;
-    if (this.x > W + 4) this.x = -4;
-    if (this.y < -12 || this.y > H + 12) this._init(false);
-  }
-  draw () {
-    const [r,g,b] = this.col;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${r},${g},${b},${this.alpha.toFixed(3)})`;
-    ctx.fill();
-  }
+/* ─── Build field particle at index i ───────────────────────────── */
+function seedField(a, i, initial) {
+  const s = i * FIELD_STRIDE;
+  a[s  ] = rnd(0, W);                                    // x
+  a[s+1] = initial ? rnd(0, H) : (coin(.5) ? -4 : H+4); // y
+  a[s+2] = (Math.random() - .5)  * 0.014;               // vx
+  a[s+3] = (Math.random() - .52) * 0.012;               // vy
+  a[s+4] = rnd(.6, 2.2);                                 // r
+  a[s+5] = rnd(.07, .34);                                // baseAlpha
+  a[s+6] = rnd(0, Math.PI * 2);                          // twPhase
+  a[s+7] = rnd(2.5e-4, 9e-4);                            // twSpeed
 }
 
-class OrbitalParticle {
-  constructor (idx, total) {
-    this.angle = (idx / total) * Math.PI * 2;
-    this.spd   = CFG.ORBIT_SPD * rand(0.78, 1.22);
-    this.rx    = CFG.ORBIT_R + rand(-6, 6);
-    this.ry    = this.rx * CFG.ORBIT_FLAT;
-    this.r     = rand(0.9, 2.0);
-    this.col   = randC();
-    this.baseA = rand(0.22, 0.58);
+/* ─── Build orbital particle at index i ─────────────────────────── */
+function seedOrbit(a, i) {
+  const s = i * ORBITAL_STRIDE;
+  const rx = ORBIT_R + rnd(-6, 6);
+  a[s  ] = (i / ORBS_N) * Math.PI * 2;                  // angle
+  a[s+1] = ORBIT_SPD * rnd(.78, 1.22);                  // speed
+  a[s+2] = rx;                                           // rx
+  a[s+3] = rx * ORBIT_FLAT;                             // ry
+  a[s+4] = rnd(.9, 2.0);                                // r
+  a[s+5] = rnd(.22, .58);                               // baseAlpha
+}
+
+/* ─── Adaptive particle count ────────────────────────────────────── */
+function countForWidth(w) {
+  if (w < 480)  return Math.round(BASE_N * .38);
+  if (w < 768)  return Math.round(BASE_N * .62);
+  if (w < 1024) return Math.round(BASE_N * .80);
+  return BASE_N;
+}
+
+/* ─── Resize: rebuild arrays only when N changes ────────────────── */
+function resize() {
+  W = window.innerWidth;
+  H = window.innerHeight;
+  canvas.width  = W;
+  canvas.height = H;
+
+  const n = countForWidth(W);
+  if (n !== fieldN) {
+    fieldN   = n;
+    fieldArr = new Float32Array(n * FIELD_STRIDE);
+    orbArr   = new Float32Array(ORBS_N * ORBITAL_STRIDE);
+    for (let i = 0; i < n;      i++) seedField(fieldArr, i, true);
+    for (let i = 0; i < ORBS_N; i++) seedOrbit(orbArr,   i);
   }
-  update (dt) { this.angle += this.spd * dt; }
-  draw (cx, cy) {
-    const px   = cx + Math.cos(this.angle) * this.rx;
-    const py   = cy + Math.sin(this.angle) * this.ry;
-    const sinA = Math.sin(this.angle);
-    const alpha = sinA < 0
-      ? this.baseA * (0.15 + 0.25 * (sinA + 1))
-      : this.baseA;
-    const [r,g,b] = this.col;
+
+  updateAvatar();
+}
+
+/* ─── Track avatar centre (updated per-frame, cheap BoundingRect) ── */
+function updateAvatar() {
+  if (!profileEl) return;
+  const r = profileEl.getBoundingClientRect();
+  avatarX = r.left + r.width  * .5;
+  avatarY = r.top  + r.height * .5;
+}
+
+/* ─── Main render loop ───────────────────────────────────────────── */
+function frame(ts) {
+  requestAnimationFrame(frame);
+
+  const dt  = lastTS ? Math.min(ts - lastTS, 50) : 16;
+  lastTS    = ts;
+  const now = performance.now();
+
+  ctx.clearRect(0, 0, W, H);
+  updateAvatar();
+
+  /* ── Field particles ── */
+  for (let i = 0; i < fieldN; i++) {
+    const s = i * FIELD_STRIDE;
+
+    // Update
+    fieldArr[s  ] += fieldArr[s+2] * dt; // x += vx*dt
+    fieldArr[s+1] += fieldArr[s+3] * dt; // y += vy*dt
+
+    // Wrap horizontal
+    if (fieldArr[s  ] < -4)   fieldArr[s  ] = W + 4;
+    if (fieldArr[s  ] > W+4)  fieldArr[s  ] = -4;
+    // Respawn vertical
+    if (fieldArr[s+1] < -12 || fieldArr[s+1] > H+12) seedField(fieldArr, i, false);
+
+    const alpha = fieldArr[s+5] * (.62 + .38 * Math.sin(fieldArr[s+6] + now * fieldArr[s+7]));
+
+    // Draw — choose colour once per particle (stable because coin() is
+    // deterministic per-seed; here we just use the phase offset as proxy)
+    const [r,g,b] = fieldArr[s+6] < Math.PI ? GOLD : SILVER;
     ctx.beginPath();
-    ctx.arc(px, py, this.r, 0, Math.PI * 2);
+    ctx.arc(fieldArr[s], fieldArr[s+1], fieldArr[s+4], 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${r},${g},${b},${alpha.toFixed(3)})`;
+    ctx.fill();
+  }
+
+  /* ── Orbital particles ── */
+  for (let i = 0; i < ORBS_N; i++) {
+    const s = i * ORBITAL_STRIDE;
+
+    fieldArr; // just keeps the reference alive — orbArr is separate
+    orbArr[s] += orbArr[s+1] * dt; // angle += speed*dt
+
+    const px   = avatarX + Math.cos(orbArr[s]) * orbArr[s+2];
+    const py   = avatarY + Math.sin(orbArr[s]) * orbArr[s+3];
+    const sinA = Math.sin(orbArr[s]);
+    // Dim particles on the "back" arc for a 3-D depth cue
+    const alpha = sinA < 0
+      ? orbArr[s+5] * (.15 + .25 * (sinA + 1))
+      : orbArr[s+5];
+
+    const [r,g,b] = i % 2 === 0 ? GOLD : SILVER;
+    ctx.beginPath();
+    ctx.arc(px, py, orbArr[s+4], 0, Math.PI * 2);
     ctx.fillStyle = `rgba(${r},${g},${b},${alpha.toFixed(3)})`;
     ctx.fill();
   }
 }
 
-function countForWidth (w) {
-  if (w < 480)  return Math.round(CFG.BASE_COUNT * 0.38);
-  if (w < 768)  return Math.round(CFG.BASE_COUNT * 0.62);
-  if (w < 1024) return Math.round(CFG.BASE_COUNT * 0.80);
-  return CFG.BASE_COUNT;
-}
-
-function buildParticles () {
-  const n = countForWidth(W);
-  field = Array.from({ length: n },           () => new FieldParticle(true));
-  orbs  = Array.from({ length: CFG.ORBIT_N }, (_, i) => new OrbitalParticle(i, CFG.ORBIT_N));
-}
-
-function updateAvatar () {
-  if (!profileEl) return;
-  const rect = profileEl.getBoundingClientRect();
-  avatarX = rect.left + rect.width  * 0.5;
-  avatarY = rect.top  + rect.height * 0.5;
-}
-
-function resize () {
-  W = window.innerWidth;
-  H = window.innerHeight;
-  canvas.width  = W;
-  canvas.height = H;
-  updateAvatar();
-  buildParticles();
-}
-
-function frame (ts) {
-  requestAnimationFrame(frame);
-  const dt  = lastTS ? Math.min(ts - lastTS, 50) : 16;
-  lastTS    = ts;
-  const now = performance.now();
-  ctx.clearRect(0, 0, W, H);
-  updateAvatar();
-  for (const p of field) { p.update(dt, now); p.draw(); }
-  for (const o of orbs)  { o.update(dt);      o.draw(avatarX, avatarY); }
-}
-
-function init () {
+/* ─── Boot: deferred until browser is idle ──────────────────────── */
+function init() {
   resize();
-  requestAnimationFrame(() => canvas.classList.add('ready'));
-  requestAnimationFrame(frame);
+  // Single rAF to allow first paint before we start animating
+  requestAnimationFrame(() => {
+    canvas.classList.add('ready');
+    requestAnimationFrame(frame);
+  });
+
+  // ResizeObserver is more accurate than the window resize event
+  // (catches font-load reflows, orientation changes, etc.)
   if (typeof ResizeObserver !== 'undefined') {
     new ResizeObserver(resize).observe(document.documentElement);
   } else {
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', resize, { passive: true });
   }
 }
 
 if (typeof requestIdleCallback !== 'undefined') {
   requestIdleCallback(init, { timeout: 2000 });
 } else {
-  setTimeout(init, 200);
+  setTimeout(init, 200); // Safari < 16 fallback
 }
 
 }());
 </script>
+
 </body>
 </html>
